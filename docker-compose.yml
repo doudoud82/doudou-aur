@@ -1,0 +1,17 @@
+services:
+  builder:
+    image: archlinux:latest
+    container_name: aur-builder
+    volumes:
+      - ./:/repo:Z
+    working_dir: /repo
+    secrets:
+      - gpg_private_key
+      - gpg_key_id
+    command: /bin/bash /repo/build-in-container.sh
+
+secrets:
+  gpg_private_key:
+    file: ./gpg_private_key.secret
+  gpg_key_id:
+    file: ./gpg_key_id.secret
