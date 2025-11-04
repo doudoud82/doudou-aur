@@ -14,7 +14,7 @@ git add x86_64/
 if git diff --staged --quiet; then
     echo "No changes to commit"
 else
-    git commit -m "Update packages $(date +%Y-%m-%d)"
+    git commit -m "Update packages $(date -u '+%Y-%m-%d %H:%M')"
     echo ""
     echo "==> Pushing to GitHub..."
     git push
