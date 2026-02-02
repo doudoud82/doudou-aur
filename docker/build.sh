@@ -9,9 +9,8 @@ if [[ ! -f "/repo/x86_64/doudou-aur.db.tar.gz" ]]; then
 fi
 
 sudo pacman -Sy --noconfirm
-
-mkdir -p "$HOME/pkgbuild"
-export AURDEST="$HOME/pkgbuild"
+mkdir -p "repo/aur-PKGBUILD"
+export AURDEST="repo/aur-PKGBUILD"
 
 packages_aur=$(grep -v '^\s*#' "$PKG_LIST" | grep -v '^\s*$' | tr '\n' ' ')
 for dir in "$PKG_DIR"/*/; do
