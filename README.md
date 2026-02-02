@@ -1,4 +1,5 @@
 # My Arch Linux Repository
+[![GitHub Pages Build](https://github.com/doudoud82/doudou-aur/actions/workflows/github-pages.yaml/badge.svg)](https://github.com/doudoud82/doudou-aur/actions/workflows/github-pages.yaml)
 
 Personal Arch Linux package repository hosted on GitHub Pages with automated builds from AUR.
 
