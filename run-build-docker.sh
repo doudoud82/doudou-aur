@@ -18,13 +18,13 @@ else
       aur-builder
 fi
 
-# git add x86_64/
-# if git diff --staged --quiet; then
-#     echo "No changes to commit"
-# else
-#     git commit -m "Update repo $(date -u '+%Y-%m-%d %H:%M')"
-#     echo ""
-#     echo "==> Pushing to GitHub..."
-#     git push
-#     echo "Done!"
-# fi
+git add .
+if git diff --staged --quiet; then
+    echo "No changes to commit"
+else
+    git commit -m "Update repo $(date -u '+%Y-%m-%d %H:%M')"
+    echo ""
+    echo "==> Pushing to GitHub..."
+    git push
+    echo "Done!"
+fi
