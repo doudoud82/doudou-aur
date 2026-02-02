@@ -1,5 +1,6 @@
 # My Arch Linux Repository
 [![GitHub Pages Build](https://github.com/doudoud82/doudou-aur/actions/workflows/github-pages.yaml/badge.svg)](https://github.com/doudoud82/doudou-aur/actions/workflows/github-pages.yaml)
+[![Github Pages Deployment](https://github.com/doudoud82/doudou-aur/actions/workflows/pages/pages-build-deployment/badge.svg?branch=gh-pages)](https://github.com/doudoud82/doudou-aur/actions/workflows/pages/pages-build-deployment)
 
 Personal Arch Linux package repository hosted on GitHub Pages with automated builds from AUR.
 
