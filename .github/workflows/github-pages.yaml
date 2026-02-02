@@ -23,10 +23,15 @@ jobs:
               run: >-
                   git lfs uninstall;
                   rm -Rf .git;
+                  rm -Rf repo-pkgbuild;
+                  rm -Rf docker;
                   rm .gitattributes;
-                  rm repo-pkgbuild/ -rf;
-                  rm docker/ -rf;
-                  rm generate-env.sh packages LICENCE README.md run-build-docker.sh;
+                  rm .gitignore;
+                  rm generate-env.sh;
+                  rm LICENCE;
+                  rm packages;
+                  rm README.md;
+                  rm run-build-docker.sh;
 
             - name: 🚀 Deploy to `gh-pages` branch
               uses: peaceiris/actions-gh-pages@v3.9.0
