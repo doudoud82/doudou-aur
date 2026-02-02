@@ -8,15 +8,12 @@ ENV_FILE=".env"
 
 docker build -t aur-builder docker/
 
-if docker ps -a --format '{{.Names}}' | grep -q "^aur-builder$"; then
-    docker start -ai aur-builder
-else
-    docker run \
-      --name aur-builder \
-      --env-file "$ENV_FILE" \
-      -v "$PWD:/repo" \
-      aur-builder
-fi
+docker run --rm \
+    --name aur-builder \
+    --env-file "$ENV_FILE" \
+    -v "$PWD:/repo" \
+    aur-builder
+
 
 git add .
 if git diff --staged --quiet; then
