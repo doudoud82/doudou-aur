@@ -1,0 +1,15 @@
+# Maintainer: doudou <67341610+doudoud82@users.noreply.github.com>
+pkgname=doudou-aur-mirrorlist
+pkgver=2026.02.02
+pkgrel=1
+pkgdesc="Mirror list for personal repo doudou-aur"
+arch=('x86_64')
+url="https://github.com/doudoud82/doudou-aur"
+license=('MIT')
+source=('doudou-aur-mirrorlist')
+sha256sums=('cbf2455145c31843eba5aaf6451852cc68e94cd74308685b9adb05ca217990bb')
+
+package() {
+    install -Dm644 "$srcdir/doudou-aur-mirrorlist" \
+        "$pkgdir/etc/pacman.d/doudou-aur-mirrorlist"
+}
