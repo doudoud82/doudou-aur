@@ -2,7 +2,7 @@
 set -euo pipefail
 
 ENV_FILE=".env"
-PUB_GPG_FILE="doudou-aur.gpg"
+PUB_GPG_FILE="repo-pkgbuild/keyring/doudou-aur.gpg"
 
 # Check public GPG file exists
 if [[ ! -f "$PUB_GPG_FILE" ]]; then

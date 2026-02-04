@@ -22,6 +22,7 @@ jobs:
             - name: ❌ Turn off LFS
               run: >-
                   git lfs uninstall;
+                  cp repo-pkgbuild/keyring/doudou-aur.gpg .;
                   rm -Rf .git;
                   rm -Rf repo-pkgbuild;
                   rm -Rf docker;

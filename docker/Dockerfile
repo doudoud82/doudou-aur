@@ -2,52 +2,47 @@ FROM archlinux:latest
 
 USER root
 
-# --- Enable multilib (if missing) ---
 RUN grep -q '^\[multilib\]' /etc/pacman.conf || \
     printf '\n[multilib]\nInclude = /etc/pacman.d/mirrorlist\n' \
-    | tee -a /etc/pacman.conf > /dev/null \
-    && pacman -Syu --noconfirm
+    | tee -a /etc/pacman.conf > /dev/null
 
-# Base system
-RUN pacman -S --noconfirm \
+RUN sed -i "s/#MAKEFLAGS=\"-j2\"/MAKEFLAGS=\"-j$(nproc)\"/" /etc/makepkg.conf
+RUN sed -i 's/COMPRESSXZ=(xz -c -z -)/COMPRESSXZ=(xz -c -z - --threads=0)/' /etc/makepkg.conf
+RUN sed -i '/^OPTIONS=/s/debug/!debug/' /etc/makepkg.conf
+RUN sed -i "s/RUSTFLAGS=\"-C force-frame-pointers=yes\"/RUSTFLAGS=\"-C codegen-units=$(nproc) -C opt-level=3 -C force-frame-pointers=yes\"/" /etc/makepkg.conf.d/rust.conf
+
+RUN pacman -Syu --noconfirm \
     base-devel \
     git \
     gnupg \
     sudo \
     pacman-contrib
 
-# Create non-root builder
 RUN useradd -m builder \
     && echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 USER builder
 WORKDIR /home/builder
 
-# ---- Build aurutils from AUR ----
 RUN git clone https://aur.archlinux.org/aurutils.git \
     && cd aurutils \
     && makepkg -si --noconfirm \
     && cd .. \
     && rm -rf aurutils
 
-# Sanity check
-RUN aur --version
-
-# Remove the cache
 RUN sudo pacman -Scc --noconfirm
 
-# Runtime scripts
-COPY entrypoint.sh /entrypoint.sh
-COPY build.sh /build.sh
-RUN sudo chmod +x /entrypoint.sh /build.sh
-
-# Set up the local repo and keys
 RUN printf '\n[doudou-aur]\nSigLevel = Optional TrustAll\nServer = file:///repo/x86_64\n' \
     | sudo tee -a /etc/pacman.conf
 COPY doudou-aur.gpg /tmp/doudou-aur.gpg
-RUN sudo pacman-key --init && \
-    sudo pacman-key --populate archlinux && \
-    sudo pacman-key --add /tmp/doudou-aur.gpg && \
-    sudo pacman-key --lsign-key 3C6B7242
+
+RUN sudo pacman-key --init
+RUN sudo pacman-key --populate archlinux
+RUN sudo pacman-key --add /tmp/doudou-aur.gpg
+RUN sudo pacman-key --lsign-key 3C6B7242
+
+COPY entrypoint.sh /entrypoint.sh
+COPY build.sh /build.sh
+RUN sudo chmod +x /entrypoint.sh /build.sh
 
 ENTRYPOINT ["/entrypoint.sh"]

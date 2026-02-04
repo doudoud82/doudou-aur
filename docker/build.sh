@@ -18,6 +18,6 @@ for dir in "$PKG_DIR"/*/; do
         printf '%s\n' "${dir%/}" >> /tmp/pkgbuild_paths
     fi
 done
-aur sync --noview --sign --remove --upgrades --noconfirm  $packages_aur
-aur build --sign --clean --remove -a /tmp/pkgbuild_paths
+aur sync --noview --sign --upgrades --noconfirm  $packages_aur
+aur build --sign --remove --new -a /tmp/pkgbuild_paths
 echo "Build complete. Repo is ready in x86_64."

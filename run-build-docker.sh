@@ -15,7 +15,7 @@ docker run --rm \
     aur-builder
 
 
-git add .
+git add x86_64
 if git diff --staged --quiet; then
     echo "No changes to commit"
 else
