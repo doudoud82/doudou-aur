@@ -12,6 +12,7 @@ sudo pacman -Sy --noconfirm
 mkdir -p "/repo/aur-PKGBUILD"
 export AURDEST="/repo/aur-PKGBUILD"
 export AUR_PAGER=cat
+export AUR_GPG="gpg --batch --yes --pinentry-mode loopback --passphrase $GPGKEY_PASSPHRASE"
 # Temporary downgrade gawk to 5.3.2 because of error until it get fixed
 # https://github.com/aurutils/aurutils/issues/1245
 # gawk: /usr/lib/aurutils/aur-graph:72:     delete(arch)
