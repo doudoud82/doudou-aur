@@ -3,7 +3,6 @@ set -e
 
 ENV_FILE=".env"
 
-rm -f "$ENV_FILE"
 ./generate-env.sh
 if [[ ! -f "$ENV_FILE" ]]; then
     echo "ERROR: $ENV_FILE not generated"
@@ -19,6 +18,8 @@ docker run --rm \
     --env-file "$ENV_FILE" \
     -v "$PWD:/repo" \
     aur-builder
+
+rm -f "$ENV_FILE"
 
 git add x86_64
 if git diff --staged --quiet; then

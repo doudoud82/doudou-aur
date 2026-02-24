@@ -10,5 +10,7 @@ fi
 # Import GPG private key for signing
 echo "$GPGKEY_PRIVATE_BASE64" | base64 -d | gpg --batch --import
 
+gpg --batch --yes --pinentry-mode loopback --passphrase "$GPGKEY_PASSPHRASE" --export-secret-keys >/dev/null
+
 # Pass execution to the build script
 exec /build.sh

@@ -8,12 +8,21 @@ SIGNING_SUBKEY_ID="46B2F45507CA0D4C"
 echo "Primary GPG key ID: $PRIMARY_KEY_ID"
 echo "Signing subkey ID: $SIGNING_SUBKEY_ID"
 
-REPO_GPG_PRIVATE_BASE64=$(gpg --export-secret-subkeys --armor "$SIGNING_SUBKEY_ID"! | base64 -w0)
+read -s -r -p "Enter passphrase for CI subkey $SIGNING_SUBKEY_ID: " PASSPHRASE
+echo
+
+REPO_GPG_PRIVATE_BASE64=$(gpg --batch \
+            --pinentry-mode loopback \
+            --passphrase "$PASSPHRASE" \
+            --export-secret-subkeys \
+            --armor "$SIGNING_SUBKEY_ID"! \
+            | base64 -w0)
 
 # Write to .env
 cat > "$ENV_FILE" <<EOF
 GPGKEY=$PRIMARY_KEY_ID
 GPGKEY_PRIVATE_BASE64=$REPO_GPG_PRIVATE_BASE64
+GPGKEY_PASSPHRASE=$PASSPHRASE
 EOF
 
 echo "$ENV_FILE generated successfully from public GPG '$PRIMARY_KEY_ID' and private key '$SIGNING_SUBKEY_ID'."
