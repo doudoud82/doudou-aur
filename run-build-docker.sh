@@ -9,7 +9,7 @@ if [[ ! -f "$ENV_FILE" ]]; then
     echo "ERROR: $ENV_FILE not generated"
     exit 1
 fi
-
+# shellcheck source=/dev/null
 source "$ENV_FILE"
 
 docker build --build-arg GPGKEY="$GPGKEY" -t aur-builder docker/
