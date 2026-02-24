@@ -1,6 +1,6 @@
-# Maintainer: doudou <67341610+doudoud82@users.noreply.github.com>
+# Maintainer: doudou <doudoud82@gmail.com>
 pkgname=doudou-aur-keyring
-pkgver=2026.02.02
+pkgver=2026.02.24
 pkgrel=1
 pkgdesc="Keyring for personal repo doudou-aur"
 arch=('any')
@@ -11,8 +11,8 @@ source=('doudou-aur-keyring.install'
         'doudou-aur.gpg'           # Your exported public key
         'doudou-aur-trusted')      # Trust levels file
 sha256sums=('9f220d839c5f47a12d301c83023ade126b1c7a6e5fbdc440872e3b07eadd9167'
-            'cd3fd734a41b3a823dd20c7aef787ac6234cc4f1c23c2434348ed5e4b46ca38c'
-            '6d5676f9f9a5fbe0c8010f80f940de5109c3c17e90a35f12a8b7006a468cb0d2')
+            'bff0e48e01bcdb8eafb13b33c083ddc9275ae598b3a688d0b3d78d141ee58a60'
+            '71430f680b9ec83a13923c556678f3b78d842ba42e271f1de4bb77069be09513')
 
 package() {
     # Install keyring
