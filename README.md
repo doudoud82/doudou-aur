@@ -18,9 +18,8 @@ List of the main packages this repo adds
 
 ### 1. Import GPG Key and install the keyring and mirrorlist
 ```bash
-curl -O --output-dir /tmp https://doudoud82.github.io/doudou-aur/doudou-aur.gpg
-sudo pacman-key --add /tmp/doudou-aur.gpg
-sudo pacman-key --lsign-key 3E7914503C6B7242
+sudo sudo pacman-key --recv-key 063F6A5182A1B15D
+sudo pacman-key --lsign-key 063F6A5182A1B15D
 sudo pacman -U https://doudoud82.github.io/doudou-aur/x86_64/doudou-aur-keyring-2026.02.02-1-any.pkg.tar.zst
 sudo pacman -U https://doudoud82.github.io/doudou-aur/x86_64/doudou-aur-mirrorlist-2026.02.02-1-x86_64.pkg.tar.zst
 ```
