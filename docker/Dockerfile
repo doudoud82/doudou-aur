@@ -16,7 +16,7 @@ RUN pacman -Syu --noconfirm \
     git \
     gnupg \
     sudo \
-    pacman-contrib
+    pacman-contrib nano
 
 RUN useradd -m builder \
     && echo "builder ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
@@ -34,12 +34,11 @@ RUN sudo pacman -Scc --noconfirm
 
 RUN printf '\n[doudou-aur]\nSigLevel = Optional TrustAll\nServer = file:///repo/x86_64\n' \
     | sudo tee -a /etc/pacman.conf
-COPY doudou-aur.gpg /tmp/doudou-aur.gpg
-
+ARG GPGKEY
 RUN sudo pacman-key --init
 RUN sudo pacman-key --populate archlinux
-RUN sudo pacman-key --add /tmp/doudou-aur.gpg
-RUN sudo pacman-key --lsign-key 3C6B7242
+RUN sudo pacman-key --recv-key ${GPGKEY}
+RUN sudo pacman-key --lsign-key ${GPGKEY}
 
 COPY entrypoint.sh /entrypoint.sh
 COPY build.sh /build.sh

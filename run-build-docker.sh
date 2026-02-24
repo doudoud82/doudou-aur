@@ -3,10 +3,16 @@ set -e
 
 ENV_FILE=".env"
 
-# Generate .env from doudou-aur.gpg
+rm -f "$ENV_FILE"
 ./generate-env.sh
+if [[ ! -f "$ENV_FILE" ]]; then
+    echo "ERROR: $ENV_FILE not generated"
+    exit 1
+fi
 
-docker build -t aur-builder docker/
+source "$ENV_FILE"
+
+docker build --build-arg GPGKEY="$GPGKEY" -t aur-builder docker/
 
 docker run --rm \
     --name aur-builder \
@@ -14,12 +20,11 @@ docker run --rm \
     -v "$PWD:/repo" \
     aur-builder
 
-
 git add x86_64
 if git diff --staged --quiet; then
     echo "No changes to commit"
 else
-    git commit -m "Update repo $(date -u '+%Y-%m-%d %H:%M')"
+    git commit -m "Update repo $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
     echo ""
     echo "==> Pushing to GitHub..."
     git push
