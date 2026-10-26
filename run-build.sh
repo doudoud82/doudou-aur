@@ -13,7 +13,7 @@ set -e
 # ─────────────────────────────────────────────────────────────────────────────
 
 # Ordered list of all packages. Dependencies must come before dependents.
-# capt-src depends on gtk2, libglade, and lib32-libxml2-legacy, so it goes last.
+# capt-src depends on gtk2, libglade, lib32-popt, and lib32-libxml2-legacy, so it goes last.
 ALL_PACKAGES=(
     keyring
     mirrorlist
