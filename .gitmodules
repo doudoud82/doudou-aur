@@ -1,0 +1,18 @@
+[submodule "pkgbuilds/aur/ab-download-manager-bin"]
+	path = pkgbuilds/aur/ab-download-manager-bin
+	url = https://aur.archlinux.org/ab-download-manager-bin.git
+[submodule "pkgbuilds/aur/capt-src"]
+	path = pkgbuilds/aur/capt-src
+	url = https://aur.archlinux.org/capt-src.git
+[submodule "pkgbuilds/aur/mkinitcpio-sd-numlock"]
+	path = pkgbuilds/aur/mkinitcpio-sd-numlock
+	url = https://aur.archlinux.org/mkinitcpio-sd-numlock.git
+[submodule "pkgbuilds/aur/gtk2"]
+	path = pkgbuilds/aur/gtk2
+	url = https://aur.archlinux.org/gtk2.git
+[submodule "pkgbuilds/aur/libglade"]
+	path = pkgbuilds/aur/libglade
+	url = https://aur.archlinux.org/libglade.git
+[submodule "pkgbuilds/aur/lib32-libxml2-legacy"]
+	path = pkgbuilds/aur/lib32-libxml2-legacy
+	url = https://aur.archlinux.org/lib32-libxml2-legacy.git
