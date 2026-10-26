@@ -48,13 +48,8 @@ fi
 # shellcheck source=/dev/null
 source "$ENV_FILE"
 
-podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder docker/
-
-podman run --rm \
-    --name aur-builder \
-    --env-file "$ENV_FILE" \
-    -v "$PWD:/repo" \
-    aur-builder "$@"
+podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder .
+podman run --rm --env-file "$ENV_FILE" -v "$PWD:/repo" aur-builder "$@"
 
 rm -f "$ENV_FILE"
 

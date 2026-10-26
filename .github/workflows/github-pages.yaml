@@ -26,7 +26,9 @@ jobs:
                   rm -Rf .git;
                   rm -Rf .gitmodules;
                   rm -Rf pkgbuilds;
-                  rm -Rf docker;
+                  rm -f Containerfile;
+                  rm -f entrypoint.sh;
+                  rm -f build.sh;
                   rm -f .gitattributes;
                   rm -f .gitignore;
                   rm -f generate-env.sh;
