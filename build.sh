@@ -59,9 +59,8 @@ build_pkg() {
     cp -a "$pkg_dir" "$work_dir"
     cd "$work_dir"
 
-    # Install dependencies (from official repos + our local repo)
-    makepkg --syncdeps --noconfirm --sign \
-            --key "$GPGKEY" \
+    # Install dependencies and build package
+    makepkg --syncdeps --noconfirm \
             --config /etc/makepkg.conf \
             2>&1 | tee "/tmp/build-${pkg_name}.log"
 
@@ -74,9 +73,15 @@ build_pkg() {
     fi
 
     for pkg_file in "${pkg_files[@]}"; do
+        echo "==> Signing ${pkg_file}..."
+        gpg --batch --yes --pinentry-mode loopback \
+            --passphrase "$GPGKEY_PASSPHRASE" \
+            --detach-sign --no-armor \
+            -u "$GPGKEY" "$pkg_file"
+
         echo "==> Adding ${pkg_file} to repository..."
         cp "$pkg_file" "$REPO_DIR/"
-        cp "${pkg_file}.sig" "$REPO_DIR/" 2>/dev/null || true
+        cp "${pkg_file}.sig" "$REPO_DIR/"
 
         # --remove (-R) deletes old version files from disk automatically
         repo-add -s -R -k "$GPGKEY" "$REPO_DB" "${REPO_DIR}/${pkg_file}"

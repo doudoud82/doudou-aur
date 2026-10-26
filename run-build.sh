@@ -50,7 +50,7 @@ fi
 source "$ENV_FILE"
 
 podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder .
-podman run --rm --env-file "$ENV_FILE" -v "$PWD/x86_64:/repo/x86_64" aur-builder "$@"
+podman run --rm --userns=keep-id --env-file "$ENV_FILE" -v "$PWD/x86_64:/repo/x86_64:Z" aur-builder "$@"
 
 rm -f "$ENV_FILE"
 
