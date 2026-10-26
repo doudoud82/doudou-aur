@@ -16,3 +16,6 @@
 [submodule "pkgbuilds/aur/lib32-libxml2-legacy"]
 	path = pkgbuilds/aur/lib32-libxml2-legacy
 	url = https://aur.archlinux.org/lib32-libxml2-legacy.git
+[submodule "pkgbuilds/aur/lib32-popt"]
+	path = pkgbuilds/aur/lib32-popt
+	url = https://aur.archlinux.org/lib32-popt.git

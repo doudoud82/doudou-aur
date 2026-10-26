@@ -22,6 +22,7 @@ ALL_PACKAGES=(
     gtk2
     lib32-libxml2-legacy
     libglade
+    lib32-popt
     capt-src
 )
 
