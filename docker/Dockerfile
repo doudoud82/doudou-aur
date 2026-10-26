@@ -24,12 +24,6 @@ RUN useradd -m builder \
 USER builder
 WORKDIR /home/builder
 
-RUN git clone https://aur.archlinux.org/aurutils.git \
-    && cd aurutils \
-    && makepkg -si --noconfirm \
-    && cd .. \
-    && rm -rf aurutils
-
 RUN sudo pacman -Scc --noconfirm
 
 RUN printf '\n[doudou-aur]\nSigLevel = Optional TrustAll\nServer = file:///repo/x86_64\n' \

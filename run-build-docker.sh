@@ -1,6 +1,43 @@
 #!/bin/bash
 set -e
 
+# ── Usage ────────────────────────────────────────────────────────────────────
+# Build all packages:
+#   ./run-build-docker.sh --all
+#
+# Build specific package(s):
+#   ./run-build-docker.sh capt-src
+#   ./run-build-docker.sh capt-src gtk2 libglade
+#
+# Packages are resolved from pkgbuilds/aur/<name> and pkgbuilds/repo/<name>.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Ordered list of all packages. Dependencies must come before dependents.
+# capt-src depends on gtk2, libglade, and lib32-libxml2-legacy, so it goes last.
+ALL_PACKAGES=(
+    keyring
+    mirrorlist
+    ab-download-manager-bin
+    mkinitcpio-sd-numlock
+    gtk2
+    lib32-libxml2-legacy
+    libglade
+    capt-src
+)
+
+if [[ $# -eq 0 ]]; then
+    echo "Usage: $0 [--all | <pkg_name> [<pkg_name> ...]]"
+    echo ""
+    echo "  --all            Build every package in pkgbuilds/"
+    echo "  <pkg_name>       Build only the specified package(s)"
+    exit 1
+fi
+
+# Resolve --all to the ordered package list
+if [[ "$1" == "--all" ]]; then
+    set -- "${ALL_PACKAGES[@]}"
+fi
+
 ENV_FILE=".env"
 
 ./generate-env.sh
@@ -17,7 +54,7 @@ docker run --rm \
     --name aur-builder \
     --env-file "$ENV_FILE" \
     -v "$PWD:/repo" \
-    aur-builder
+    aur-builder "$@"
 
 rm -f "$ENV_FILE"
 

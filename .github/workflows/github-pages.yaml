@@ -22,17 +22,17 @@ jobs:
             - name: ❌ Turn off LFS
               run: >-
                   git lfs uninstall;
-                  cp repo-pkgbuild/keyring/doudou-aur.gpg .;
+                  cp pkgbuilds/repo/keyring/doudou-aur.gpg .;
                   rm -Rf .git;
-                  rm -Rf repo-pkgbuild;
+                  rm -Rf .gitmodules;
+                  rm -Rf pkgbuilds;
                   rm -Rf docker;
-                  rm .gitattributes;
-                  rm .gitignore;
-                  rm generate-env.sh;
-                  rm LICENCE;
-                  rm packages;
-                  rm README.md;
-                  rm run-build-docker.sh;
+                  rm -f .gitattributes;
+                  rm -f .gitignore;
+                  rm -f generate-env.sh;
+                  rm -f LICENCE;
+                  rm -f README.md;
+                  rm -f run-build-docker.sh;
 
             - name: 🚀 Deploy to `gh-pages` branch
               uses: peaceiris/actions-gh-pages@v3.9.0
