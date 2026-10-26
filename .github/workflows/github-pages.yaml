@@ -32,7 +32,7 @@ jobs:
                   rm -f generate-env.sh;
                   rm -f LICENCE;
                   rm -f README.md;
-                  rm -f run-build-docker.sh;
+                  rm -f run-build.sh;
 
             - name: 🚀 Deploy to `gh-pages` branch
               uses: peaceiris/actions-gh-pages@v3.9.0

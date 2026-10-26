@@ -2,12 +2,12 @@
 set -e
 
 # ── Usage ────────────────────────────────────────────────────────────────────
-# Build all packages:
-#   ./run-build-docker.sh --all
+# Build all packages (in correct dependency order):
+#   ./run-build.sh --all
 #
 # Build specific package(s):
-#   ./run-build-docker.sh capt-src
-#   ./run-build-docker.sh capt-src gtk2 libglade
+#   ./run-build.sh capt-src
+#   ./run-build.sh capt-src gtk2 libglade
 #
 # Packages are resolved from pkgbuilds/aur/<name> and pkgbuilds/repo/<name>.
 # ─────────────────────────────────────────────────────────────────────────────
@@ -28,7 +28,7 @@ ALL_PACKAGES=(
 if [[ $# -eq 0 ]]; then
     echo "Usage: $0 [--all | <pkg_name> [<pkg_name> ...]]"
     echo ""
-    echo "  --all            Build every package in pkgbuilds/"
+    echo "  --all            Build every package in pkgbuilds/ (dependency-ordered)"
     echo "  <pkg_name>       Build only the specified package(s)"
     exit 1
 fi
@@ -48,9 +48,9 @@ fi
 # shellcheck source=/dev/null
 source "$ENV_FILE"
 
-docker build --build-arg GPGKEY="$GPGKEY" -t aur-builder docker/
+podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder docker/
 
-docker run --rm \
+podman run --rm \
     --name aur-builder \
     --env-file "$ENV_FILE" \
     -v "$PWD:/repo" \
