@@ -5,13 +5,19 @@
 Personal Arch Linux package repository hosted on GitHub Pages with automated builds from AUR.
 
 ## Requirement
-Docker is a requirement to build the packages.
+Podman is a requirement to build the packages.
 
 ## 📦 Available Packages
 List of the main packages this repo adds
+- doudou-aur-keyring
+- doudou-aur-mirrorlist
+- mkinitcpio-sd-numlock
 - ab-download-manager-bin
 - capt-src
-- mkinitcpio-sd-numlock
+- gtk2
+- lib32-libxml2-legacy
+- lib32-popt
+- libglade
 
 
 ## 🚀 Usage
@@ -52,10 +58,23 @@ View all available packages: [Browse x86_64/](https://github.com/doudoud82/doudo
 
 ## 🛠️ For Maintainer
 
-### Adding New Packages
-Just add the package name in the packages file.
+### To build or update the repo
+In order to rebuild everything do:
+```bash
+./run-build.sh --all
+```
+or to build specific packages inorder do:
+```bash
+./run-build.sh <pkg1> <pkg2>
+```
 
-And finally call `./run-build-docker.sh`
+### Adding New Packages
+To add a new package use the helper shell script
+```bash
+./add-aur-package.sh <AUR URL>
+```
+> [!NOTE]
+> To make the added packages part of the --all command for rebuilding the repo make sure to manually add the package to the `ALL_PACKAGES` array in `run-build.sh` after testing it.
 
 ## 📝 License
 
