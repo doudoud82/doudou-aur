@@ -1,0 +1,11 @@
+# Ordered list of all packages. Dependencies must come before dependents.
+# capt-src depends on gtk2, libglade, lib32-popt, and lib32-libxml2-legacy, so it goes after them.
+keyring
+mirrorlist
+ab-download-manager-bin
+mkinitcpio-sd-numlock
+gtk2
+lib32-libxml2-legacy
+libglade
+lib32-popt
+capt-src
