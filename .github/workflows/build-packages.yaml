@@ -1,0 +1,36 @@
+name: Build Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'Packages to build (default: "--all", or space-separated names like "capt-src gtk2")'
+        required: true
+        default: '--all'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          lfs: true
+          fetch-depth: 0
+
+      - name: 📦 Git LFS Pull
+        run: git lfs pull
+
+      - name: 🏗️ Run Build Script
+        env:
+          GPGKEY: ${{ vars.GPGKEY || '063F6A5182A1B15D' }}
+          GPGKEY_PRIVATE_BASE64: ${{ secrets.GPGKEY_PRIVATE_BASE64 }}
+          GPGKEY_PASSPHRASE: ${{ secrets.GPGKEY_PASSPHRASE }}
+        run: |
+          chmod +x run-build.sh
+          ./run-build.sh ${{ inputs.packages }}
