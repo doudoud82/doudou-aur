@@ -36,25 +36,43 @@ if [[ "$1" == "--all" ]]; then
     set -- "${ALL_PACKAGES[@]}"
 fi
 
-ENV_FILE=".env"
+PRIMARY_KEY_ID="${GPGKEY:-063F6A5182A1B15D}"
+SIGNING_SUBKEY_ID="${GPG_SUBKEY:-46B2F45507CA0D4C}"
 
-./generate-env.sh
-if [[ ! -f "$ENV_FILE" ]]; then
-    echo "ERROR: $ENV_FILE not generated"
-    exit 1
+export GPGKEY="$PRIMARY_KEY_ID"
+
+if [[ -z "${GPGKEY_PRIVATE_BASE64:-}" || -z "${GPGKEY_PASSPHRASE:-}" ]]; then
+    echo "Primary GPG key ID: $PRIMARY_KEY_ID"
+    echo "Signing subkey ID: $SIGNING_SUBKEY_ID"
+    read -s -r -p "Enter passphrase for CI subkey $SIGNING_SUBKEY_ID: " GPGKEY_PASSPHRASE
+    echo
+
+    GPGKEY_PRIVATE_BASE64=$(gpg --batch \
+        --pinentry-mode loopback \
+        --passphrase "$GPGKEY_PASSPHRASE" \
+        --export-secret-subkeys \
+        --armor "$SIGNING_SUBKEY_ID"! \
+        | base64 -w0)
+    export GPGKEY_PRIVATE_BASE64
+    export GPGKEY_PASSPHRASE
 fi
-# shellcheck source=/dev/null
-source "$ENV_FILE"
 
 podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder .
-podman run --rm --userns=keep-id --env-file "$ENV_FILE" -v "$PWD/x86_64:/repo/x86_64:Z" aur-builder "$@"
-
-rm -f "$ENV_FILE"
+podman run --rm --userns=keep-id \
+    -e GPGKEY="$GPGKEY" \
+    -e GPGKEY_PRIVATE_BASE64="$GPGKEY_PRIVATE_BASE64" \
+    -e GPGKEY_PASSPHRASE="$GPGKEY_PASSPHRASE" \
+    -v "$PWD/x86_64:/repo/x86_64:Z" \
+    aur-builder "$@"
 
 git add x86_64
 if git diff --staged --quiet; then
     echo "No changes to commit"
 else
+    if [[ -n "${CI:-}" ]] && ! git config user.name >/dev/null 2>&1; then
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+    fi
     git commit -m "Update repo $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
     echo ""
     echo "==> Pushing to GitHub..."
