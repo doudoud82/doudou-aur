@@ -12,19 +12,16 @@ set -e
 # Packages are resolved from pkgbuilds/aur/<name> and pkgbuilds/repo/<name>.
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Ordered list of all packages. Dependencies must come before dependents.
-# capt-src depends on gtk2, libglade, lib32-popt, and lib32-libxml2-legacy, so it goes last.
-ALL_PACKAGES=(
-    keyring
-    mirrorlist
-    ab-download-manager-bin
-    mkinitcpio-sd-numlock
-    gtk2
-    lib32-libxml2-legacy
-    libglade
-    lib32-popt
-    capt-src
-)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PACKAGES_FILE="${SCRIPT_DIR}/packages.txt"
+
+if [[ ! -f "$PACKAGES_FILE" ]]; then
+    echo "ERROR: Package file '$PACKAGES_FILE' not found." >&2
+    exit 1
+fi
+
+# Ordered list of all packages read from packages.txt.
+mapfile -t ALL_PACKAGES < <(grep -v -E '^\s*(#|$)' "$PACKAGES_FILE")
 
 if [[ $# -eq 0 ]]; then
     echo "Usage: $0 [--all | <pkg_name> [<pkg_name> ...]]"

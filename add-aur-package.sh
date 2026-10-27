@@ -18,3 +18,15 @@ hash=$(git -C "$path" rev-parse HEAD)
 
 printf '\nAdded AUR submodule: %s\n' "$path"
 printf 'Commit: %s\n' "$hash"
+
+script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+packages_file="${script_dir}/packages.txt"
+
+if [[ -f "$packages_file" ]]; then
+    if ! grep -qFx "$name" "$packages_file"; then
+        echo "$name" >> "$packages_file"
+        printf 'Appended %s to %s\n' "$name" "$packages_file"
+    else
+        printf '%s is already present in %s\n' "$name" "$packages_file"
+    fi
+fi

@@ -74,7 +74,7 @@ To add a new package use the helper shell script
 ./add-aur-package.sh <AUR URL>
 ```
 > [!NOTE]
-> To make the added packages part of the --all command for rebuilding the repo make sure to manually add the package to the `ALL_PACKAGES` array in `run-build.sh` after testing it.
+> Added packages are automatically appended to `packages.txt` to be included in `./run-build.sh --all`. If the package has dependencies from AUR ensure they are added before the package `packages.txt`.
 
 ## 📝 License
 
