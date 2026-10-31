@@ -1,0 +1,50 @@
+name: Update AUR Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      packages:
+        description: 'Packages to update (e.g. "--all" or space-separated names like "capt-src gtk2")'
+        required: true
+        type: string
+      trigger_build:
+        description: 'Trigger Build Packages workflow for updated packages'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  update:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: 🛎️ Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: ⚙️ Setup Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: 🔄 Check and Update Submodules
+        id: update
+        env:
+          PACKAGES_INPUT: ${{ inputs.packages }}
+        run: ./update-aur-packages.sh --push $PACKAGES_INPUT
+
+      - name: 🚀 Trigger Build Packages Workflow
+        if: ${{ inputs.trigger_build && steps.update.outputs.has_updates == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UPDATED_PACKAGES: ${{ steps.update.outputs.updated_packages }}
+          TARGET_REF: ${{ github.ref_name }}
+        run: |
+          echo "Triggering build-packages for: $UPDATED_PACKAGES on branch: $TARGET_REF"
+          gh workflow run build-packages.yaml --ref "$TARGET_REF" -f packages="$UPDATED_PACKAGES"
+
