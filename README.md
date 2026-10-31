@@ -76,6 +76,16 @@ To add a new package use the helper shell script
 > [!NOTE]
 > Added packages are automatically appended to `packages.txt` to be included in `./run-build.sh --all`. If the package has dependencies from AUR ensure they are added before the package `packages.txt`.
 
+### Updating AUR Packages
+To check for upstream updates and pin the latest commit:
+```bash
+# Check and update all AUR packages that have new upstream commits
+./update-aur-packages.sh --all
+
+# Or update only specific package(s)
+./update-aur-packages.sh capt-src gtk2
+```
+
 ## 📝 License
 
 Packages retain their original licenses from AUR. See individual package PKGBUILD at [AUR](https://aur.archlinux.org/) for details.

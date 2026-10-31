@@ -34,11 +34,11 @@ jobs:
                   rm -f generate-env.sh;
                   rm -f LICENCE;
                   rm -f README.md;
-                  rm -f check-aur-updates.sh;
                   rm -f add-aur-package.sh;
                   rm -f run-build.sh;
                   rm -f packages.txt;
                   rm -f generate-github-secrets.sh;
+                  rm -f update-aur-packages.sh;
 
             - name: 🚀 Deploy to `gh-pages` branch
               uses: peaceiris/actions-gh-pages@v4
