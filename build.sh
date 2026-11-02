@@ -74,10 +74,16 @@ build_pkg() {
 
     for pkg_file in "${pkg_files[@]}"; do
         echo "==> Signing ${pkg_file}..."
-        gpg --batch --yes --pinentry-mode loopback \
-            --passphrase "$GPGKEY_PASSPHRASE" \
-            --detach-sign --no-armor \
-            -u "$GPGKEY" "$pkg_file"
+        if [[ -n "${GPGKEY_PASSPHRASE:-}" ]]; then
+            gpg --batch --yes --pinentry-mode loopback \
+                --passphrase "$GPGKEY_PASSPHRASE" \
+                --detach-sign --no-armor \
+                -u "$GPGKEY" "$pkg_file"
+        else
+            gpg --batch --yes \
+                --detach-sign --no-armor \
+                -u "$GPGKEY" "$pkg_file"
+        fi
 
         echo "==> Adding ${pkg_file} to repository..."
         cp "$pkg_file" "$REPO_DIR/"
@@ -103,7 +109,11 @@ fi
 
 # Set GPG signing command for repo-add / makepkg
 export GPGKEY
-export GPG="gpg --batch --yes --pinentry-mode loopback --passphrase ${GPGKEY_PASSPHRASE}"
+if [[ -n "${GPGKEY_PASSPHRASE:-}" ]]; then
+    export GPG="gpg --batch --yes --pinentry-mode loopback --passphrase ${GPGKEY_PASSPHRASE}"
+else
+    export GPG="gpg --batch --yes"
+fi
 
 init_repo
 

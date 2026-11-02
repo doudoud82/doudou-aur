@@ -41,7 +41,7 @@ SIGNING_SUBKEY_ID="${GPG_SUBKEY:-46B2F45507CA0D4C}"
 
 export GPGKEY="$PRIMARY_KEY_ID"
 
-if [[ -z "${GPGKEY_PRIVATE_BASE64:-}" || -z "${GPGKEY_PASSPHRASE:-}" ]]; then
+if [[ -z "${GPGKEY_PRIVATE_BASE64:-}" ]]; then
     echo "Primary GPG key ID: $PRIMARY_KEY_ID"
     echo "Signing subkey ID: $SIGNING_SUBKEY_ID"
     read -s -r -p "Enter passphrase for CI subkey $SIGNING_SUBKEY_ID: " GPGKEY_PASSPHRASE
@@ -61,7 +61,7 @@ podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder .
 podman run --rm --userns=keep-id \
     -e GPGKEY="$GPGKEY" \
     -e GPGKEY_PRIVATE_BASE64="$GPGKEY_PRIVATE_BASE64" \
-    -e GPGKEY_PASSPHRASE="$GPGKEY_PASSPHRASE" \
+    -e GPGKEY_PASSPHRASE="${GPGKEY_PASSPHRASE:-}" \
     -v "$PWD/x86_64:/repo/x86_64:Z" \
     aur-builder "$@"
 
