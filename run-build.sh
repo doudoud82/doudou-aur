@@ -58,7 +58,11 @@ if [[ -z "${GPGKEY_PRIVATE_BASE64:-}" ]]; then
 fi
 
 podman build --build-arg GPGKEY="$GPGKEY" -t aur-builder .
-podman run --rm --userns=keep-id \
+BUILDER_UID=$(podman run --rm --entrypoint /usr/bin/id aur-builder -u builder)
+BUILDER_GID=$(podman run --rm --entrypoint /usr/bin/id aur-builder -g builder)
+
+podman run --rm \
+	--userns="keep-id:uid=${BUILDER_UID},gid=${BUILDER_GID}" \
     -e GPGKEY="$GPGKEY" \
     -e GPGKEY_PRIVATE_BASE64="$GPGKEY_PRIVATE_BASE64" \
     -e GPGKEY_PASSPHRASE="${GPGKEY_PASSPHRASE:-}" \
