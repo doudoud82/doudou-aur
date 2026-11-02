@@ -35,9 +35,9 @@ jobs:
           chmod +x run-build.sh
           ./run-build.sh ${{ inputs.packages }}
 
-       - name: 🚀 Trigger GitHub Pages Build
-          env:
-            GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          run: |
-            gh workflow run "GitHub Pages Build" \
-              --ref master
+      - name: 🚀 Trigger GitHub Pages Build
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run "GitHub Pages Build" \
+            --ref master
