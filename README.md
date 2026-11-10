@@ -36,7 +36,7 @@ Edit `/etc/pacman.conf` and add:
 ```ini
 [doudou-aur]
 SigLevel = Required DatabaseOptional
-Server = /etc/pacman.d/doudou-aur-mirrorlist
+Include = /etc/pacman.d/doudou-aur-mirrorlist
 ```
 
 ### 3. Install Packages
