@@ -1,9 +1,9 @@
 # Maintainer: doudou <doudoud82@gmail.com>
 pkgname=doudou-aur-mirrorlist
-pkgver=2026.02.24
+pkgver=2026.11.10
 pkgrel=1
 pkgdesc="Mirror list for personal repo doudou-aur"
-arch=('x86_64')
+arch=('any')
 url="https://github.com/doudoud82/doudou-aur"
 license=('MIT')
 source=('doudou-aur-mirrorlist')

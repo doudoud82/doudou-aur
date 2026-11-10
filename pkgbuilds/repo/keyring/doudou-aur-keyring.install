@@ -1,8 +1,6 @@
 post_install() {
-    # Import keys to pacman's keyring
-    if [ -x /usr/bin/pacman-key ]; then
-        pacman-key --init
-        pacman-key --populate doudou-aur
+    if usr/bin/pacman-key -l >/dev/null 2>&1; then
+        usr/bin/pacman-key --populate doudou-aur
     fi
 }
 
@@ -12,6 +10,6 @@ post_upgrade() {
 
 pre_remove() {
     if [ -x /usr/bin/pacman-key ]; then
-        pacman-key --delete 3C6B7242 2>/dev/null || true
+        usr/bin/pacman-key --delete 093CEA480F11E0A613AF2CFB063F6A5182A1B15D 2>/dev/null || true
     fi
 }
