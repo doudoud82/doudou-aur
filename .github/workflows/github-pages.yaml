@@ -40,13 +40,13 @@ jobs:
                   rm -f packages.txt;
                   rm -f generate-github-secrets.sh;
                   rm -f update-aur-packages.sh;
-                  cd x86_64
-                  latest=$(ls -v doudou-aur-keyring-*-any.pkg.tar.zst | tail -n1)
-                  cp -f "$latest"     doudou-aur-keyring.pkg.tar.zst
-                  cp -f "$latest.sig" doudou-aur-keyring.pkg.tar.zst.sig
-                  latest=$(ls -v doudou-aur-mirrorlist-*-any.pkg.tar.zst | tail -n1)
-                  cp -f "$latest"     doudou-aur-mirrorlist.pkg.tar.zst
-                  cp -f "$latest.sig" doudou-aur-mirrorlist.pkg.tar.zst.sig
+                  cd x86_64;
+                  latest=$(ls -v doudou-aur-keyring-*-any.pkg.tar.zst | tail -n1);
+                  cp -f "$latest"     doudou-aur-keyring.pkg.tar.zst;
+                  cp -f "$latest.sig" doudou-aur-keyring.pkg.tar.zst.sig;
+                  latest=$(ls -v doudou-aur-mirrorlist-*-any.pkg.tar.zst | tail -n1);
+                  cp -f "$latest"     doudou-aur-mirrorlist.pkg.tar.zst;
+                  cp -f "$latest.sig" doudou-aur-mirrorlist.pkg.tar.zst.sig;
 
             - name: 🚀 Deploy to `gh-pages` branch
               uses: peaceiris/actions-gh-pages@v4
