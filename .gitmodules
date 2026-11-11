@@ -19,3 +19,6 @@
 [submodule "pkgbuilds/aur/lib32-popt"]
 	path = pkgbuilds/aur/lib32-popt
 	url = https://aur.archlinux.org/lib32-popt.git
+[submodule "pkgbuilds/aur/calamares-git"]
+	path = pkgbuilds/aur/calamares-git
+	url = https://aur.archlinux.org/calamares-git.git
