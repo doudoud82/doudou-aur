@@ -10,9 +10,9 @@ install=doudou-aur-keyring.install
 source=('doudou-aur-keyring.install'
         'doudou-aur.gpg'           # Your exported public key
         'doudou-aur-trusted')      # Trust levels file
-sha256sums=('8c99b20fd99519de6b9055c26dbbdc0e5cbbee3db21ec48a5931692ba49e3a42'
+sha256sums=('4f59c9fd0b12a70cba27f8e4b835c90de44d48e6b060ffbbfe897c89a70db94a'
             'bff0e48e01bcdb8eafb13b33c083ddc9275ae598b3a688d0b3d78d141ee58a60'
-            '71430f680b9ec83a13923c556678f3b78d842ba42e271f1de4bb77069be09513')
+            '8c99b20fd99519de6b9055c26dbbdc0e5cbbee3db21ec48a5931692ba49e3a42')
 
 package() {
     # Install keyring
