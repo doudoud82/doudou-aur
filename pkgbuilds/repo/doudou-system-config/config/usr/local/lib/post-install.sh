@@ -26,7 +26,7 @@ if [[ ! -f "$ADGUARD_CONFIG" ]]; then
     install -Dm600 "$ADGUARD_DEFAULT" "$ADGUARD_CONFIG"
 fi
 
-chown adguardhome:adguardhome /var/lib/adguardhome
+chown -R adguardhome:adguardhome /var/lib/adguardhome
 chmod 0750 /var/lib/adguardhome
 chmod 0600 "$ADGUARD_CONFIG"
 
