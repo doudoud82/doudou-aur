@@ -1,6 +1,10 @@
+
 post_install() {
     # Generate snapper config
     snapper --no-dbus -c root create-config /
+
+    # Copy the whole config tree into place
+    tar -C /usr/share/doudou/system/config -cf - . | tar -C / -xpf - --no-overwrite-dir || return 1
 
     # Create Secure Boot keys if they don't already exist.
     if [[ ! -s /var/lib/sbctl/keys/db/db.key ]]; then

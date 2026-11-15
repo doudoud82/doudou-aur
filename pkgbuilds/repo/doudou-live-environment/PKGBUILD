@@ -34,21 +34,15 @@ depends=(
 package(){
     cd "$startdir/files"
 
-    # copies the files
-    cp -a etc "$pkgdir/"
-    cp -a usr "$pkgdir/"
+    cp -a --no-preserve=ownership etc usr "$pkgdir/"
+    
+    find "$pkgdir" -type d -exec chmod 755 {} +
+    find "$pkgdir" -type f -exec chmod 644 {} +
 
-    # Permissions
-    chmod 0440 "$pkgdir/etc/sudoers.d/10-liveuser"
-    chmod 0755 "$pkgdir/usr/local/bin/trust-desktop-launchers"
-    chmod 0755 \
-    "$pkgdir/etc/skel/Desktop" \
-    "$pkgdir/etc/skel/Desktop/GParted.desktop" \
-    "$pkgdir/etc/skel/Desktop/Install System.desktop" \
-    "$pkgdir/usr/share/backgrounds/doudou"
-    chmod 0644 \
-        "$pkgdir/etc/pacman.d/hooks/liveuser.hook" \
-        "$pkgdir/etc/systemd/system/getty@tty1.service.d/autologin.conf" \
-        "$pkgdir/usr/share/backgrounds/doudou/wallhaven-9dge6k.png"
+    chmod 750 "$pkgdir/etc/sudoers.d"
+    chmod 440 "$pkgdir/etc/sudoers.d/10-liveuser"
+    chmod 755 "$pkgdir/usr/local/bin/trust-desktop-launchers"
+    chmod 755 "$pkgdir/etc/skel/Desktop/GParted.desktop" \
+              "$pkgdir/etc/skel/Desktop/Install System.desktop"
 
 }

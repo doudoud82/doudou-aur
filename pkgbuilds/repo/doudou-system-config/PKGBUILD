@@ -11,17 +11,13 @@ depends=(
 )
 
 package(){
-    cd "$startdir/files"
 
-    # copies the files
-    cp -a etc "$pkgdir/"
-    cp -a usr "$pkgdir/"
-    
-    # Permissions
-    chmod 0750 "$pkgdir/etc/sudoers.d"
-    chmod 0440 "$pkgdir/etc/sudoers.d/"*
+    local dest="$pkgdir/usr/share/doudou/system/config"
+    install -d "$pkgdir/usr/share/doudou/system"
+    cp -a --no-preserve=ownership "$startdir/config" "$dest"
 
-    chmod 0640 "$pkgdir/etc/snapper/configs/root"
-
-    chmod 0755 "$pkgdir/usr/local/lib/post-install.sh"
-}
+    chmod 0750 "$dest/etc/sudoers.d"
+    chmod 0440 "$dest/etc/sudoers.d/"*
+    chmod 0640 "$dest/etc/snapper/configs/root"
+    chmod 0755 "$dest/usr/local/lib/post-install.sh"
+    }
