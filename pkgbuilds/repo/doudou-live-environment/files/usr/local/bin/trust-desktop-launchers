@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+for launcher in "$HOME"/Desktop/*.desktop; do
+    [[ -f "$launcher" ]] || continue
+
+    gio set -t string "$launcher" metadata::xfce-exe-checksum \
+        "$(sha256sum "$launcher" | awk '{print $1}')"
+done

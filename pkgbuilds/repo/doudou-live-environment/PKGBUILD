@@ -1,0 +1,57 @@
+pkgname=doudou-live-environment
+pkgver=1.0
+pkgrel=1
+pkgdesc="Doudou Arch Linux live environment"
+arch=('any')
+depends=(
+    'bash'
+    'chaotic-keyring'
+    'chaotic-mirrorlist'
+    'doudou-aur-keyring'
+    'doudou-aur-mirrorlist'
+    'firefox'
+    'gparted'
+    'gtkmm3'
+    'gvfs'
+    'iptables'
+    'libglvnd'
+    'mesa'
+    'mkinitcpio-firmware'
+    'mousepad'
+    'network-manager-applet'
+    'networkmanager'
+    'papirus-icon-theme'
+    'rate-mirrors'
+    'thunar'
+    'tumbler'
+    'xfce4-panel'
+    'xfce4-session'
+    'xfce4-settings'
+    'xfce4-terminal'
+    'xfdesktop'
+    'xfwm4'
+    'xorg-server'
+)
+
+
+package(){
+    cd "$startdir/files"
+
+    # copies the files
+    cp -a etc "$pkgdir/"
+    cp -a usr "$pkgdir/"
+
+    # Permissions
+    chmod 0440 "$pkgdir/etc/sudoers.d/10-liveuser"
+    chmod 0755 "$pkgdir/usr/local/bin/trust-desktop-launchers"
+    chmod 0755 \
+    "$pkgdir/etc/skel/Desktop" \
+    "$pkgdir/etc/skel/Desktop/GParted.desktop" \
+    "$pkgdir/etc/skel/Desktop/Install System.desktop" \
+    "$pkgdir/usr/share/backgrounds/doudou"
+    chmod 0644 \
+        "$pkgdir/etc/pacman.d/hooks/liveuser.hook" \
+        "$pkgdir/etc/systemd/system/getty@tty1.service.d/autologin.conf" \
+        "$pkgdir/usr/share/backgrounds/doudou/wallhaven-9dge6k.png"
+
+}
