@@ -10,3 +10,7 @@ libglade
 lib32-popt
 capt-src
 calamares-git
+
+# I don't think the following packages need to be updated
+# doudou-live-environment
+# doudou-system-config

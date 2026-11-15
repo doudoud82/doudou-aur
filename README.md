@@ -11,6 +11,8 @@ Podman is a requirement to build the packages.
 List of the main packages this repo adds
 - doudou-aur-keyring
 - doudou-aur-mirrorlist
+- doudou-live-environment
+- doudou-system-config
 - mkinitcpio-sd-numlock
 - ab-download-manager-bin
 - capt-src
