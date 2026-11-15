@@ -1,0 +1,13 @@
+[Unit]
+Description=One-time post-install script
+After=network-online.target
+Wants=network-online.target
+ConditionPathExists=!/var/lib/doudou/setup-complete
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/lib/post-install.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

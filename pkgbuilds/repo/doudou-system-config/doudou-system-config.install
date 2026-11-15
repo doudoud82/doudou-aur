@@ -1,0 +1,23 @@
+post_install() {
+    # Generate snapper config
+    snapper --no-dbus -c root create-config /
+
+    # Create Secure Boot keys if they don't already exist.
+    if [[ ! -s /var/lib/sbctl/keys/db/db.key ]]; then
+        sbctl create-keys || return 1
+    fi
+
+    # Sign fwupd EFI binary.
+    if [[ -f /usr/lib/fwupd/efi/fwupdx64.efi ]]; then
+        sbctl sign -s \
+            -o /usr/lib/fwupd/efi/fwupdx64.efi.signed \
+            /usr/lib/fwupd/efi/fwupdx64.efi || return 1
+    fi
+
+    # Sign systemd-boot.
+    if [[ -f /usr/lib/systemd/boot/efi/systemd-bootx64.efi ]]; then
+        sbctl sign -s \
+            -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed \
+            /usr/lib/systemd/boot/efi/systemd-bootx64.efi || return 1
+    fi
+}

@@ -1,0 +1,34 @@
+set linenumbers
+
+set nonewlines
+
+set tabsize 4
+
+set trimblanks
+
+set titlecolor white,blue
+set promptcolor lightwhite,lightblack
+set statuscolor white,green
+set errorcolor brightwhite,red
+set spotlightcolor black,lime
+set selectedcolor white,white
+set stripecolor ,yellow
+set scrollercolor cyan
+set numbercolor cyan
+set keycolor cyan
+set functioncolor green
+
+set titlecolor brightwhite
+set promptcolor black,yellow
+set statuscolor brightwhite
+set errorcolor bold,lightwhite,red
+set spotlightcolor black,orange
+set selectedcolor white,cyan
+set stripecolor ,yellow
+set scrollercolor magenta
+set numbercolor white
+set keycolor brightwhite
+set functioncolor white
+
+include "/usr/share/nano/*.nanorc"
+include "/usr/share/nano/extra/*.nanorc"

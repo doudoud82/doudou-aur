@@ -1,0 +1,27 @@
+pkgname=doudou-system-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Doudou Arch Linux configuration files for system"
+arch=('any')
+install="doudou-system-config.install"
+depends=(
+    'snapper'
+    'fwupd'
+    'sbctl'
+)
+
+package(){
+    cd "$startdir/files"
+
+    # copies the files
+    cp -a etc "$pkgdir/"
+    cp -a usr "$pkgdir/"
+    
+    # Permissions
+    chmod 0750 "$pkgdir/etc/sudoers.d"
+    chmod 0440 "$pkgdir/etc/sudoers.d/"*
+
+    chmod 0640 "$pkgdir/etc/snapper/configs/root"
+
+    chmod 0755 "$pkgdir/usr/local/lib/post-install.sh"
+}
