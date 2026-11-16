@@ -1,0 +1,71 @@
+name: Deploy Repository to GitLab
+
+on:
+  workflow_dispatch:
+
+  workflow_run:
+    workflows: ["Build Packages"]
+    types: [completed]
+    branches: [master]
+
+  push:
+    branches: [master]
+    paths:
+      - 'x86_64/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-gitlab
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: master
+          fetch-depth: 1
+          lfs: true
+          persist-credentials: false
+
+      - name: Prepare repository
+        run: |
+          git lfs uninstall || true
+
+          mkdir -p deploy
+          cp -a x86_64 deploy/
+
+          # Copy repository signing key
+          cp pkgbuilds/repo/keyring/doudou-aur.gpg deploy/
+
+          cd deploy
+
+          # Remove unnecessary files
+          rm -f .gitattributes .gitignore
+          rm -f README.md LICENSE LICENCE
+
+      - name: Push to GitLab
+        env:
+          GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+        run: |
+          cd deploy
+
+          git init
+          git config user.name "doudou"
+          git config user.email "31397487-doudoud82@users.noreply.gitlab.com"
+
+          git add .
+          git commit -m "Deploy Arch repository"
+
+          git branch -M master
+
+          git remote add origin \
+            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/doudoud82/doudou-aur.git"
+
+          git push --force origin master
