@@ -1,0 +1,10 @@
+
+post_install() {
+    install -Dm644 \
+        /usr/share/doudou/plasma/plasmalogin-autologin \
+        /etc/pam.d/plasmalogin-autologin
+
+    install -Dm644 \
+        /usr/share/doudou/plasma/keyringmode.conf \
+        /etc/systemd/system/plasmalogin.service.d/keyringmode.conf
+}

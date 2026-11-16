@@ -1,0 +1,11 @@
+[Defaults]
+Profile=Default
+
+[PROFILE_Default]
+EmailAddress=
+EmailClient[$e]=eu.betterbird.Betterbird.desktop
+FullName=doudou
+Organization=
+ReplyAddr=
+ServerType=
+TerminalClient=false

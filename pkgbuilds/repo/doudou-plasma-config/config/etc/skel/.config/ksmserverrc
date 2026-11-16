@@ -1,0 +1,6 @@
+[General]
+confirmLogout=false
+loginMode=emptySession
+
+[Session: saved at previous logout]
+count=0

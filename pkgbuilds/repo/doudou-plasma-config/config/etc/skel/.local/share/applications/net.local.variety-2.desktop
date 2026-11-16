@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=variety -p
+Name=variety previous image
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

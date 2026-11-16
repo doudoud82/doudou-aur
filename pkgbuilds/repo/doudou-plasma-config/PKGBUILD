@@ -1,0 +1,16 @@
+pkgname=doudou-plasma-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Doudou Arch Linux configuration files for plasma"
+arch=('any')
+install="doudou-plasma-config.install"
+depends=()
+
+package(){
+    cd "$startdir/config"
+    cp -a --no-preserve=ownership etc usr "$pkgdir/"
+
+    # normalise modes (cp -a keeps whatever your working tree had)
+    find "$pkgdir" -type d -exec chmod 755 {} +
+    find "$pkgdir" -type f -exec chmod 644 {} +
+}

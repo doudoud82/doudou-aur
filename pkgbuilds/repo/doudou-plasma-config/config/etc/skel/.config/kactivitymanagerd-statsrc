@@ -1,0 +1,5 @@
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-b4197556-71a2-4018-bc79-1557ffd79fd3]
+ordering=applications:systemsettings.desktop,applications:brave-browser.desktop,applications:org.kde.dolphin.desktop,applications:com.microsoft.VSCode.desktop,applications:eu.betterbird.Betterbird.desktop,applications:com.abdownloadmanager.desktop,applications:mpv.desktop,applications:org.kde.konsole.desktop
+
+[Favorites-org.kde.plasma.kickoff.favorites.instance-3-global]
+ordering=applications:systemsettings.desktop,applications:brave-browser.desktop,applications:org.kde.dolphin.desktop,applications:com.microsoft.VSCode.desktop,applications:eu.betterbird.Betterbird.desktop,applications:com.abdownloadmanager.desktop,applications:mpv.desktop,applications:org.kde.konsole.desktop
