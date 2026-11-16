@@ -11,8 +11,8 @@ on:
   push:
     branches: [master]
     paths:
-      - 'x86_64/**'
-      - 'pkgbuilds/repo/keyring/doudou-aur.gpg'
+      - "x86_64/**"
+      - "pkgbuilds/repo/keyring/doudou-aur.gpg"
 
 permissions:
   contents: read
@@ -54,10 +54,10 @@ jobs:
           git init
           git config user.name "doudou"
           git config user.email "31397487-doudoud82@users.noreply.gitlab.com"
-          
+
           git lfs install --local
-          git lfs track "*.pkg.tar.zst"
-          
+          git lfs track "*"
+
           git add .gitattributes
           git add .
           git commit -m "Deploy Arch repository"
