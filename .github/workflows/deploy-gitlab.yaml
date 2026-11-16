@@ -1,3 +1,4 @@
+
 name: Deploy Repository to GitLab
 
 on:
@@ -13,6 +14,7 @@ on:
     paths:
       - "x86_64/**"
       - "pkgbuilds/repo/keyring/doudou-aur.gpg"
+      - ".gitlab-ci.yml"
 
 permissions:
   contents: read
@@ -37,13 +39,15 @@ jobs:
 
       - name: Prepare repository
         run: |
-          git lfs uninstall || true
-
           mkdir -p deploy
+
           cp -a x86_64 deploy/
 
           # Copy repository signing key
           cp pkgbuilds/repo/keyring/doudou-aur.gpg deploy/
+
+          # Copy GitLab CI configuration
+          cp .gitlab-ci.yml deploy/
 
       - name: Push to GitLab
         env:
@@ -56,7 +60,8 @@ jobs:
           git config user.email "31397487-doudoud82@users.noreply.gitlab.com"
 
           git lfs install --local
-          git lfs track "*"
+
+          git lfs track "x86_64/**"
 
           git add .gitattributes
           git add .
