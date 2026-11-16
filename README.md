@@ -13,9 +13,12 @@ List of the main packages this repo adds
 - doudou-aur-mirrorlist
 - doudou-live-environment
 - doudou-system-config
+- doudou-plasma-config
 - mkinitcpio-sd-numlock
 - ab-download-manager-bin
 - capt-src
+- cursor-bin
+- antigravity-ide
 - gtk2
 - lib32-libxml2-legacy
 - lib32-popt

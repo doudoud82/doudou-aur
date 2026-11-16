@@ -22,3 +22,9 @@
 [submodule "pkgbuilds/aur/calamares-git"]
 	path = pkgbuilds/aur/calamares-git
 	url = https://aur.archlinux.org/calamares-git.git
+[submodule "pkgbuilds/aur/cursor-bin"]
+	path = pkgbuilds/aur/cursor-bin
+	url = https://aur.archlinux.org/cursor-bin.git
+[submodule "pkgbuilds/aur/antigravity-ide"]
+	path = pkgbuilds/aur/antigravity-ide
+	url = https://aur.archlinux.org/antigravity-ide.git
