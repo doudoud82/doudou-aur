@@ -12,6 +12,7 @@ on:
     branches: [master]
     paths:
       - 'x86_64/**'
+      - 'pkgbuilds/repo/keyring/doudou-aur.gpg'
 
 permissions:
   contents: read
@@ -43,12 +44,6 @@ jobs:
 
           # Copy repository signing key
           cp pkgbuilds/repo/keyring/doudou-aur.gpg deploy/
-
-          cd deploy
-
-          # Remove unnecessary files
-          rm -f .gitattributes .gitignore
-          rm -f README.md LICENSE LICENCE
 
       - name: Push to GitLab
         env:
