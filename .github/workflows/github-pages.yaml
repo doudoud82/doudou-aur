@@ -2,9 +2,18 @@
 name: GitHub Pages Build
 
 on:
+    workflow_run:
+        workflows: ["Build Packages"]
+        types: [completed]
+        branches: [master]
+    
     push:
         branches:
-            - master # Set a branch to deploy
+            - master
+        paths:
+            - 'x86_64/**'
+            - 'pkgbuilds/repo/keyring/doudou-aur.gpg'
+    
     workflow_dispatch:
 
 permissions:
