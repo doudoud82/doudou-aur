@@ -25,6 +25,14 @@ pages:
     - mkdir -p public
     - cp -a x86_64 public/
     - cp doudou-aur.gpg public/
+    - cd public/
+    - latest=$(ls -v doudou-aur-keyring-*-any.pkg.tar.zst | tail -n1)
+    - cp -f "$latest"     doudou-aur-keyring.pkg.tar.zst
+    - cp -f "$latest.sig" doudou-aur-keyring.pkg.tar.zst.sig
+    - latest=$(ls -v doudou-aur-mirrorlist-*-any.pkg.tar.zst | tail -n1)
+    - cp -f "$latest"     doudou-aur-mirrorlist.pkg.tar.zst
+    - cp -f "$latest.sig" doudou-aur-mirrorlist.pkg.tar.zst.sig
+
 
   artifacts:
     paths:

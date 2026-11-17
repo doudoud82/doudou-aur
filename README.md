@@ -31,8 +31,8 @@ List of the main packages this repo adds
 ```bash
 sudo sudo pacman-key --recv-key 063F6A5182A1B15D
 sudo pacman-key --lsign-key 063F6A5182A1B15D
-sudo pacman -U https://doudoud82.github.io/doudou-aur/x86_64/doudou-aur-keyring.pkg.tar.zst
-sudo pacman -U https://doudoud82.github.io/doudou-aur/x86_64/doudou-aur-mirrorlist.pkg.tar.zst
+sudo pacman -U https://doudou-aur-49243e.gitlab.io/x86_64/doudou-aur-keyring.pkg.tar.zst
+sudo pacman -U https://doudou-aur-49243e.gitlab.io/x86_64/doudou-aur-mirrorlist.pkg.tar.zst
 ```
 
 ### 2. Add Repository to Pacman
