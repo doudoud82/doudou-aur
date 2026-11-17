@@ -34,7 +34,7 @@ pages:
     - cp -f "$latest.sig" doudou-aur-mirrorlist.pkg.tar.zst.sig
 
   artifacts:
-    expire_in: 1 min
+    expire_in: 1h
     paths:
       - public/
 
