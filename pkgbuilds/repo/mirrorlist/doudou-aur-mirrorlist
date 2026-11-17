@@ -1,2 +1,10 @@
 # GitHub Pages
-Server = https://doudoud82.github.io/$repo/$arch
+# Doesn't currently work because of LFS files and github not accepting binary bulbs bigger than 100MB
+# Server = https://doudoud82.github.io/$repo/$arch
+
+# Gitlab
+# the main repo url has LFS files thus can't use it
+# at least can build the gitlab pages artifact (max size 1GB?) and copy the files there
+# just in case should also look into gitlab Generic Package Registry in future.
+# Server = https://gitlab.com/doudoud82/$repo/-/raw/master/$arch
+Server = https://doudou-aur-49243e.gitlab.io/$arch

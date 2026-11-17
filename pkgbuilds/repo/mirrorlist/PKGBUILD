@@ -1,13 +1,13 @@
 # Maintainer: doudou <doudoud82@gmail.com>
 pkgname=doudou-aur-mirrorlist
-pkgver=2026.11.10
+pkgver=2026.11.17
 pkgrel=1
 pkgdesc="Mirror list for personal repo doudou-aur"
 arch=('any')
 url="https://github.com/doudoud82/doudou-aur"
 license=('MIT')
 source=('doudou-aur-mirrorlist')
-sha256sums=('cbf2455145c31843eba5aaf6451852cc68e94cd74308685b9adb05ca217990bb')
+sha256sums=('dc942c29f4a77bdac8e036f38200e955d07f05093f8287ce49f573db3204c779')
 
 package() {
     install -Dm644 "$srcdir/doudou-aur-mirrorlist" \
