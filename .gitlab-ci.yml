@@ -33,8 +33,8 @@ pages:
     - cp -f "$latest"     doudou-aur-mirrorlist.pkg.tar.zst
     - cp -f "$latest.sig" doudou-aur-mirrorlist.pkg.tar.zst.sig
 
-
   artifacts:
+    expire_in: 1 min
     paths:
       - public/
 
