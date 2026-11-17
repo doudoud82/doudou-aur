@@ -5,6 +5,7 @@ pkgdesc="Doudou Arch Linux configuration files for system"
 arch=('any')
 install="doudou-system-config.install"
 depends=(
+    'cups'
     'snapper'
     'fwupd'
     'sbctl'

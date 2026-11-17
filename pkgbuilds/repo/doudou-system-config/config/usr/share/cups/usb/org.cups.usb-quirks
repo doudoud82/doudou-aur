@@ -1,0 +1,86 @@
+# Canon, Inc. LBP810 Printer
+0x04a9 0x260a blacklist
+
+# Canon, Inc. LBP1120 Printer
+0x04a9 0x262b blacklist
+
+# Canon, Inc. LBP1210 Printer
+0x04a9 0x2617 blacklist
+
+# Canon, Inc. LBP2000 Printer
+0x04a9 0x260e blacklist
+
+# Canon, Inc. LBP2900/LBP2900B Printer
+0x04a9 0x2676 blacklist
+
+# Canon, Inc. LBP3000 Printer
+0x04a9 0x266a blacklist
+
+# Canon, Inc. LBP3010/LBP3018/LBP3050 Printer
+0x04a9 0x26da blacklist
+
+# Canon, Inc. LBP3100/LBP3108/LBP3150 Printer
+0x04a9 0x26db blacklist
+
+# Canon, Inc. LBP3200 Printer
+0x04a9 0x2636 blacklist
+
+# Canon, Inc. LBP3210 Printer
+0x04a9 0x2657 blacklist
+
+# Canon, Inc. LBP3250 Printer
+# CAPT printer with unknown USB ID
+# 0x04a9 0x???? blacklist
+
+# Canon, Inc. LBP3300 Printer
+0x04a9 0x267e blacklist
+
+# Canon, Inc. LBP3310 Printer
+0x04a9 0x26b9 blacklist
+
+# Canon, Inc. LBP3500 Printer
+0x04a9 0x268b blacklist
+
+# Canon, Inc. LBP3600 Printer
+0x04a9 0x2654 blacklist
+
+# Canon, Inc. LBP5000 Printer
+0x04a9 0x2679 blacklist
+
+# Canon, Inc. LBP5050 Printer
+0x04a9 0x26ba blacklist
+
+# Canon, Inc. LBP5100 Printer
+0x04a9 0x26a4 blacklist
+
+# Canon, Inc. LBP5200 Printer
+0x04a9 0x266e blacklist
+
+# Canon, Inc. LBP5300 Printer
+0x04a9 0x26a1 blacklist
+
+# Canon, Inc. LBP6000/LBP6018 Printer
+0x04a9 0x271a blacklist
+
+# Canon, Inc. LBP6020 Printer
+0x04a9 0x2771 blacklist
+
+# Canon, Inc. LBP6230/LBP6240 Printer
+0x04a9 0x2796 blacklist
+
+# Canon, Inc. LBP6200 Printer
+0x04a9 0x271b blacklist
+
+# Canon, Inc. LBP6300 Printer
+# Possibly also: LBP6300n LBP6310dn
+0x04a9 0x26ff blacklist
+
+# Canon, Inc. LBP7010C/7018C Printer
+0x04a9 0x271c blacklist
+
+# Canon, Inc. LBP7200C Printer
+# Possibly also: LBP7200Cdn
+0x04a9 0x26f1 blacklist
+
+# Canon, Inc. LBP9100C Printer
+0x04a9 0x26ea blacklist
