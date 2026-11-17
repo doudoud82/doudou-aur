@@ -1,0 +1,5 @@
+/* adw-gtk3 Colorizer Extension Start */
+:root {
+  --accent-bg-color: var(--accent-blue);
+}
+/* adw-gtk3 Colorizer Extension End */

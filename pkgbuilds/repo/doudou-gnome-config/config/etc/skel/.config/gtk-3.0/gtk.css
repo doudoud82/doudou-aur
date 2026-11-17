@@ -1,0 +1,4 @@
+/* adw-gtk3 Colorizer Extension Start */
+@define-color accent_bg_color #3584e4;
+@define-color accent_color @accent_bg_color;
+/* adw-gtk3 Colorizer Extension End */

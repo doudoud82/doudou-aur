@@ -1,0 +1,21 @@
+pkgname=doudou-gnome-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Doudou Arch Linux configuration files for Gnome"
+install="doudou-gnome-config.install"
+arch=('any')
+depends=()
+
+package(){
+    cd "$startdir/config"
+    cp -a --no-preserve=ownership etc "$pkgdir/"
+
+    # normalise modes (cp -a keeps whatever your working tree had)
+    find "$pkgdir" -type d -exec chmod 755 {} +
+    find "$pkgdir" -type f -exec chmod 644 {} +
+    
+    chmod 755 \
+    "$pkgdir"/etc/skel/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/gsconnect \
+    "$pkgdir"/etc/skel/.local/share/gnome-shell/extensions/gsconnect@andyholmes.github.io/gsconnect-preferences
+
+}
