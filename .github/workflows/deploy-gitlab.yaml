@@ -37,39 +37,31 @@ jobs:
           lfs: true
           persist-credentials: false
 
-      - name: Prepare repository
-        run: |
-          mkdir -p deploy
-
-          cp -a x86_64 deploy/
-
-          # Copy repository signing key
-          cp pkgbuilds/repo/doudou-aur-keyring/doudou-aur.gpg deploy/
-
-          # Copy GitLab CI configuration
-          cp .gitlab-ci.yml deploy/
-
       - name: Push to GitLab
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
+          GIT_LFS_SKIP_SMUDGE: "1"
         run: |
+          git clone --depth=1 --branch master "https://oauth2:${GITLAB_TOKEN}@gitlab.com/doudoud82/doudou-aur.git" deploy
           cd deploy
 
-          git init
           git config user.name "doudou"
           git config user.email "31397487-doudoud82@users.noreply.gitlab.com"
 
           git lfs install --local
-
           git lfs track "x86_64/**"
 
-          git add .gitattributes
-          git add .
+          rsync -a --delete ../x86_64/ x86_64/
+          cp ../pkgbuilds/repo/doudou-aur-keyring/doudou-aur.gpg .
+          cp ../.gitlab-ci.yml .
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+
           git commit -m "Deploy Arch repository"
 
-          git branch -M master
-
-          git remote add origin \
-            "https://oauth2:${GITLAB_TOKEN}@gitlab.com/doudoud82/doudou-aur.git"
-
-          git push --force origin master
+          git push origin master
