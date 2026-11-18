@@ -1,0 +1,19 @@
+pkgname=doudou-calamares-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="Doudou Arch Linux calamares config"
+arch=('any')
+depends=(
+    'calamares-git'
+)
+
+
+package(){
+    cd "$startdir/config"
+
+    cp -a --no-preserve=ownership etc "$pkgdir/"
+    
+    find "$pkgdir" -type d -exec chmod 755 {} +
+    find "$pkgdir" -type f -exec chmod 644 {} +
+
+}

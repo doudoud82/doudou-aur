@@ -1,0 +1,5 @@
+name: hardware_config
+type: job
+interface: python
+script: main.py
+noconfig: true

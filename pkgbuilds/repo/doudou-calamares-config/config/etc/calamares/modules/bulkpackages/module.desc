@@ -1,0 +1,4 @@
+type: "job"
+name: "bulkpackages"
+interface: "python"
+script: "main.py"

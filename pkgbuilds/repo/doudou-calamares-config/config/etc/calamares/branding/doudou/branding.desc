@@ -1,0 +1,45 @@
+componentName:  doudou
+
+welcomeStyleCalamares:   false
+
+welcomeExpandingLogo:   true
+
+windowExpanding:    normal
+
+windowSize: 1000px,650px
+
+windowPlacement: center
+
+sidebar: widget
+
+navigation: widget
+
+strings:
+    productName:         "doudou Arch Linux Installer"
+    shortProductName:    "Arch Linux"
+    version:             "2026.11"
+    shortVersion:        "2026"
+    versionedName:       "doudou ArchLinux Installer 2026.11"
+    shortVersionedName:  "doudou 2026"
+    productUrl:          ""
+    supportUrl:          ""
+    knownIssuesUrl:      ""
+    releaseNotesUrl:     ""
+    donateUrl:           ""
+
+
+images:
+    productIcon:         "squid.png"
+    productLogo:         "squid.png"
+    productWelcome:      "languages.png"
+
+style:
+   SidebarBackground:        "#292F34"
+   SidebarText:              "#FFFFFF"
+   SidebarTextCurrent:       "#292F34"
+   SidebarBackgroundCurrent: "#D35400"
+
+slideshow:               "show.qml"
+
+slideshowAPI: 2
+
