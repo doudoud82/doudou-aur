@@ -66,7 +66,13 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][2][Applets][33][Configuration][General]
+alphaSort=true
+customButtonImage=distributor-logo-archlinux
 favoritesPortedToKAstats=true
+highlightNewlyInstalledApps=false
+showRecentApps=false
+showRecentDocs=false
+useCustomButtonImage=true
 
 [Containments][2][Applets][5]
 immutability=1
@@ -175,7 +181,7 @@ knownItems=org.kde.plasma.vault,org.kde.plasma.bluetooth,org.kde.plasma.camerain
 shownItems=variety,org.kde.plasma.volume,org.kde.plasma.networkmanagement
 
 [Containments][2][General]
-AppletOrder=3;5;6;7;31;32
+AppletOrder=33;3;5;6;7;31;32
 
 [ScreenMapping]
 itemsOnDisabledScreens=

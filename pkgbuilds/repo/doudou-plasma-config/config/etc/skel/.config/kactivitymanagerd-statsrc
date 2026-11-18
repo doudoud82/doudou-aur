@@ -1,3 +1,9 @@
+[Favorites-org.kde.plasma.kicker.favorites.instance-33-b4197556-71a2-4018-bc79-1557ffd79fd3]
+ordering=applications:com.microsoft.VSCode.desktop,applications:brave-browser.desktop,applications:org.kde.konsole.desktop,applications:mpv.desktop
+
+[Favorites-org.kde.plasma.kicker.favorites.instance-33-global]
+ordering=applications:com.microsoft.VSCode.desktop,applications:brave-browser.desktop,applications:org.kde.konsole.desktop,applications:mpv.desktop
+
 [Favorites-org.kde.plasma.kickoff.favorites.instance-3-b4197556-71a2-4018-bc79-1557ffd79fd3]
 ordering=applications:brave-browser.desktop,applications:systemsettings.desktop,applications:com.microsoft.VSCode.desktop,applications:org.kde.konsole.desktop,applications:mpv.desktop
 
