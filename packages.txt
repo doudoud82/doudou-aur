@@ -4,6 +4,7 @@
 # doudou-live-environment
 # doudou-system-config
 # doudou-plasma-config
+# doudou-calamares-config
 doudou-aur-keyring
 doudou-aur-mirrorlist
 ab-download-manager-bin
