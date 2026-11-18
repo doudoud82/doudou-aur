@@ -16,3 +16,4 @@ capt-src
 calamares-git
 cursor-bin
 antigravity-ide
+vuescan-bin

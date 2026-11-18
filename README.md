@@ -23,6 +23,7 @@ List of the main packages this repo adds
 - lib32-libxml2-legacy
 - lib32-popt
 - libglade
+- vuescan-bin
 
 
 ## 🚀 Usage

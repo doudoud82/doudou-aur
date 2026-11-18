@@ -28,3 +28,6 @@
 [submodule "pkgbuilds/aur/antigravity-ide"]
 	path = pkgbuilds/aur/antigravity-ide
 	url = https://aur.archlinux.org/antigravity-ide.git
+[submodule "pkgbuilds/aur/vuescan-bin"]
+	path = pkgbuilds/aur/vuescan-bin
+	url = https://aur.archlinux.org/vuescan-bin.git
