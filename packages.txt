@@ -20,3 +20,6 @@ antigravity-ide
 vuescan-bin
 windscribe-v2-bin
 fresh-editor
+google-chrome
+visual-studio-code-bin
+topgrade
