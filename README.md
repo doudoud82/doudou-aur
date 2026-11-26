@@ -25,8 +25,6 @@ List of the main packages this repo adds
 - libglade
 - vuescan-bin
 - windscribe-v2-bin
-- fresh-editor
-
 
 ## 🚀 Usage
 

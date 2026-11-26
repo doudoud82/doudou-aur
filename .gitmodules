@@ -34,15 +34,3 @@
 [submodule "pkgbuilds/aur/windscribe-v2-bin"]
 	path = pkgbuilds/aur/windscribe-v2-bin
 	url = https://aur.archlinux.org/windscribe-v2-bin.git
-[submodule "pkgbuilds/aur/fresh-editor"]
-	path = pkgbuilds/aur/fresh-editor
-	url = https://aur.archlinux.org/fresh-editor.git
-[submodule "pkgbuilds/aur/google-chrome"]
-	path = pkgbuilds/aur/google-chrome
-	url = https://aur.archlinux.org/google-chrome.git
-[submodule "pkgbuilds/aur/visual-studio-code-bin"]
-	path = pkgbuilds/aur/visual-studio-code-bin
-	url = https://aur.archlinux.org/visual-studio-code-bin.git
-[submodule "pkgbuilds/aur/topgrade"]
-	path = pkgbuilds/aur/topgrade
-	url = https://aur.archlinux.org/topgrade.git
