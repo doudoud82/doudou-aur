@@ -18,3 +18,5 @@ calamares-git
 cursor-bin
 antigravity-ide
 vuescan-bin
+windscribe-v2-bin
+fresh-editor

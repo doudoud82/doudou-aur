@@ -31,3 +31,9 @@
 [submodule "pkgbuilds/aur/vuescan-bin"]
 	path = pkgbuilds/aur/vuescan-bin
 	url = https://aur.archlinux.org/vuescan-bin.git
+[submodule "pkgbuilds/aur/windscribe-v2-bin"]
+	path = pkgbuilds/aur/windscribe-v2-bin
+	url = https://aur.archlinux.org/windscribe-v2-bin.git
+[submodule "pkgbuilds/aur/fresh-editor"]
+	path = pkgbuilds/aur/fresh-editor
+	url = https://aur.archlinux.org/fresh-editor.git

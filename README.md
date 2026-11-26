@@ -24,6 +24,8 @@ List of the main packages this repo adds
 - lib32-popt
 - libglade
 - vuescan-bin
+- windscribe-v2-bin
+- fresh-editor
 
 
 ## 🚀 Usage
